@@ -6,23 +6,21 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @MappedSuperclass
 public class AbstractEntity {
     @Id
-    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
-    @Getter
-    @Setter
+
     @Column(name = "cadastro", nullable = false)
     private LocalDateTime cadastro;
-    @Getter
-    @Setter
+
     @Column(name = "atualizacao")
     private LocalDateTime atualizacao;
-    @Getter
-    @Setter
+
     @Column(name = "ativo", nullable = false)
     private boolean ativo;
 
