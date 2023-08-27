@@ -1,14 +1,10 @@
 package com.api.stagease.Controller;
 
-import com.api.stagease.DTO.ExpedienteDTO;
 import com.api.stagease.DTO.LocalDTO;
-import com.api.stagease.Entity.ExpedienteEntity;
 import com.api.stagease.Entity.LocalEntity;
-import com.api.stagease.Repository.ExpedienteRepository;
 import com.api.stagease.Repository.LocalRepository;
-import com.api.stagease.Service.ExpedienteService;
+import com.api.stagease.Service.LocalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +16,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/local")
 public class LocalController {
-    /*@Autowired
-    private LocalService service;*/
+    @Autowired
+    private LocalService service;
     @Autowired
     private LocalRepository repository;
 
@@ -42,9 +38,9 @@ public class LocalController {
     }
 
     @PostMapping
-    public ResponseEntity<LocalEntity> create(@RequestBody LocalDTO dto) {
+    public ResponseEntity<LocalEntity> create(@RequestBody final LocalDTO dto) {
         try {
-            return ResponseEntity.ok(this.service.cadastrar(dto));
+            return ResponseEntity.ok(this.service.create(dto));
         }
         catch (Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
