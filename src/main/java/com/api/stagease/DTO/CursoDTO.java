@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class CursoDTO {
     private Long id;
-    private String nome;
+    private String nomeCurso;
 }
