@@ -1,4 +1,4 @@
-package com.api.stagease.config;
+package com.api.stagease.Config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

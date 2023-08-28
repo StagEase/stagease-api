@@ -48,13 +48,14 @@ public class LocalController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<LocalEntity> update(@PathVariable("id") final Long id, @RequestBody final LocalDTO dto) {
+    public ResponseEntity<?> update(@PathVariable("id") final Long id, @RequestBody final LocalDTO dto) {
         try {
-            return ResponseEntity.ok(this.service.update(id, dto));
+            service.update(id, dto);
         }
         catch (DataIntegrityViolationException e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
+        return ResponseEntity.ok("Registro atualizado");
     }
 
     @DeleteMapping("/{id}")
