@@ -25,13 +25,13 @@ public class LocalService {
     }
 
     @Transactional
-    public LocalEntity update(Long id, LocalDTO dto) {
+    public void update(Long id, LocalDTO dto) {
         LocalEntity banco = this.repository.findById(id).orElse(null);
         if (!banco.getId().equals(dto.getId())) {
             throw new RuntimeException("Não foi possivel encontrar o registro informado");
         }
         modelMapper.map(dto, banco);
-        return repository.save(banco);
+        repository.save(banco);
     }
 
     @Transactional

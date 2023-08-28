@@ -1,8 +1,6 @@
 package com.api.stagease.Service;
 
-import com.api.stagease.DTO.CursoDTO;
 import com.api.stagease.DTO.SupervisorDTO;
-import com.api.stagease.Entity.CursoEntity;
 import com.api.stagease.Entity.SupervisorEntity;
 import com.api.stagease.Repository.SupervisorRepository;
 import org.modelmapper.ModelMapper;
