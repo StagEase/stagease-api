@@ -11,10 +11,14 @@ import lombok.Setter;
 public class EstagiarioEntity extends AbstractEntity{
     @Column(length = 50, nullable = false)
     private String nomeEstagiario;
-    @JoinColumn(name = "curso", nullable = false)
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "curso_id", referencedColumnName = "id", nullable = false)
     private CursoEntity curso;
+
     @Column(length = 50, nullable = false)
     private String periodo;
+
     @Column(length = 50, nullable = false)
     private String instituicaoDeEnsino;
 }

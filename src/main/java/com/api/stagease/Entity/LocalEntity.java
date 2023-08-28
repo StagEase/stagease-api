@@ -14,13 +14,15 @@ import java.util.List;
 public class LocalEntity extends AbstractEntity{
     @Column(length = 50, nullable = false, unique = true)
     private String nomeLocal;
+
     @Column(length = 50, nullable = false, unique = true)
     private String email;
+
     @ManyToMany
     @JoinTable(
             name = "local_curso",
             joinColumns = @JoinColumn(name = "local_id"),
             inverseJoinColumns = @JoinColumn(name = "curso_id")
     )
-    private List<CursoEntity> cursos = new ArrayList<>();
+    private List<CursoEntity> cursos;
 }
