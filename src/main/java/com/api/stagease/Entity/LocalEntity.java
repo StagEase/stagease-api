@@ -12,9 +12,9 @@ import java.util.List;
 @Entity
 @Table(name = "local", schema = "stagease")
 public class LocalEntity extends AbstractEntity{
-    @Column(length = 50, nullable = false)
-    private String nome;
-    @Column(length = 50)
+    @Column(length = 50, nullable = false, unique = true)
+    private String nomeLocal;
+    @Column(length = 50, nullable = false, unique = true)
     private String email;
     @ManyToMany
     @JoinTable(
@@ -23,12 +23,4 @@ public class LocalEntity extends AbstractEntity{
             inverseJoinColumns = @JoinColumn(name = "curso_id")
     )
     private List<CursoEntity> cursos = new ArrayList<>();
-
-    public LocalEntity() {}
-
-    public LocalEntity(String nome, String email, List<CursoEntity> cursos) {
-        this.nome = nome;
-        this.email = email;
-        this.cursos = cursos;
-    }
 }

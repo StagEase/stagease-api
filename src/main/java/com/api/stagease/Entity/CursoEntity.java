@@ -11,6 +11,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "curso", schema = "stagease")
 public class CursoEntity extends AbstractEntity {
-    @Column(name = "curso", length = 50, nullable = false)
+    @Column(name = "nome_curso", length = 50, nullable = false, unique = true)
     private String nomeCurso;
 }

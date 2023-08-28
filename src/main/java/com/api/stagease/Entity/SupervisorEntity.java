@@ -11,7 +11,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "superisor", schema = "stagease")
 public class SupervisorEntity extends AbstractEntity {
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false)
     private String nomeSupervisor;
 }
 
