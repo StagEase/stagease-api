@@ -4,20 +4,22 @@ import com.api.stagease.Entity.CursoEntity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class LocalDTO {
     private Long id;
-    private String nome;
+    private String nomeLocal;
     private String email;
-    private CursoEntity cursos;
+    private List<CursoEntity> ocorrencias;
 
     public LocalDTO() {}
 
-    public LocalDTO(Long id, String nome, String email, CursoEntity cursos) {
+    public LocalDTO(Long id, String nomeLocal, String email, List<CursoEntity> ocorrencias) {
         this.id = id;
-        this.nome = nome;
+        this.nomeLocal = nomeLocal;
         this.email = email;
-        this.cursos = cursos;
+        this.ocorrencias = ocorrencias;
     }
 }

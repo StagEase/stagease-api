@@ -1,5 +1,6 @@
 package com.api.stagease.DTO;
 
+import com.api.stagease.Entity.CursoEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,18 +8,18 @@ import lombok.Setter;
 @Setter
 public class EstagiarioDTO {
     private Long id;
-    private String nome;
-    private String curso;
+    private String nomeEstagiario;
+    private CursoEntity curso;
     private String periodo;
-    private String ie;
+    private String instituicaoDeEnsino;
 
     public EstagiarioDTO() {}
 
-    public EstagiarioDTO(Long id, String nome, String curso, String periodo, String ie) {
+    public EstagiarioDTO(Long id, String nomeEstagiario, CursoEntity curso, String periodo, String instituicaoDeEnsino) {
         this.id = id;
-        this.nome = nome;
+        this.nomeEstagiario = nomeEstagiario;
         this.curso = curso;
         this.periodo = periodo;
-        this.ie = ie;
+        this.instituicaoDeEnsino = instituicaoDeEnsino;
     }
 }
