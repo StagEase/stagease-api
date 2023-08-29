@@ -4,6 +4,7 @@ import com.api.stagease.DTO.EstagiarioDTO;
 import com.api.stagease.Entity.EstagiarioEntity;
 import com.api.stagease.Repository.EstagiarioRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,9 @@ public class EstagiarioService {
             throw new RuntimeException("Não insira o id manualmente");
         }
         EstagiarioEntity entity = modelMapper.map(dto, EstagiarioEntity.class);
-        return repository.save(entity);
+        EstagiarioDTO estagiario = new EstagiarioDTO();
+        BeanUtils.copyProperties(repository.save(entity), estagiario);
+        return estagiario;
     }
 
     @Transactional

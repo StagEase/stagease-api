@@ -57,14 +57,14 @@ public class LocalController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id") final Long id) {
-        final LocalEntity local = this.repository.findById(id).orElse(null);
-        try {
-            this.repository.delete(local);
-            return ResponseEntity.ok("Local deletado com sucesso");
-        } catch (RuntimeException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        }
-    }
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<HttpStatus> delete(@PathVariable("id") final Long id) {
+//        final LocalEntity local = this.repository.findById(id).orElse(null);
+//        try {
+//            this.repository.delete(local);
+//            return ResponseEntity.ok("Local deletado com sucesso");
+//        } catch (RuntimeException e) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+//        }
+//    }
 }

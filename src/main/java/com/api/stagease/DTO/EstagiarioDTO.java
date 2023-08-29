@@ -3,12 +3,10 @@ package com.api.stagease.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
-@Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class EstagiarioDTO {
     private Long id;
     private String nomeEstagiario;
@@ -16,3 +14,4 @@ public class EstagiarioDTO {
     private String periodo;
     private String instituicaoDeEnsino;
 }
+

@@ -4,15 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DuracaoDTO {
+public class AbstractDTO {
     private Long id;
-    private LocalTime dataInicio;
-    private LocalTime dataFim;
-    private Long cargaHoraria;
-    private SolicitacaoDTO solicitacao;
+    private LocalDateTime cadastro;
+    private LocalDateTime atualizacao;
+    private boolean ativo;
 }

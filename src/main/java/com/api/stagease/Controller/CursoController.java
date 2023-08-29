@@ -1,5 +1,6 @@
 package com.api.stagease.Controller;
 
+import com.api.stagease.Config.HandlerException;
 import com.api.stagease.DTO.CursoDTO;
 import com.api.stagease.Entity.CursoEntity;
 import com.api.stagease.Repository.CursoRepository;
@@ -7,7 +8,9 @@ import com.api.stagease.Service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping(value = "/curso")
@@ -25,11 +28,14 @@ public class CursoController {
     @GetMapping
     public ResponseEntity<?> getByIdRequest(@RequestParam("id") final Long id) {
         final CursoEntity entity = this.repository.findById(id).orElse(null);
-        return entity == null ? ResponseEntity.badRequest().body("Esse registro não existe") : ResponseEntity.ok(entity);
+        if (entity.getId() == null) {
+            throw new HandlerException("Não foi possivel encontrar o id: " + id);
+        }
+        return ResponseEntity.ok(entity);
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody CursoDTO dto) {
+    public ResponseEntity<?> create(@Validated @RequestBody CursoDTO dto) {
         try {
             service.create(dto);
         } catch (Exception e) {
