@@ -1,10 +1,9 @@
 package com.api.stagease.Controller;
 
 import com.api.stagease.DTO.EstagiarioDTO;
-import com.api.stagease.DTO.LocalDTO;
 import com.api.stagease.Entity.EstagiarioEntity;
-import com.api.stagease.Entity.LocalEntity;
 import com.api.stagease.Repository.EstagiarioRepository;
+import com.api.stagease.Service.LocalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -17,8 +16,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/estagiario")
 public class EstagiarioController {
-    /*@Autowired
-    private LocalService service;*/
+    @Autowired
+    private LocalService service;
     @Autowired
     private EstagiarioRepository repository;
 
