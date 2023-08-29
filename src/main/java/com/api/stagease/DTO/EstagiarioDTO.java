@@ -13,7 +13,7 @@ import lombok.Setter;
 public class EstagiarioDTO {
     private Long id;
     private String nomeEstagiario;
-    private CursoEntity curso;
+    private CursoDTO curso;
     private String periodo;
     private String instituicaoDeEnsino;
 }
