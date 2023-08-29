@@ -1,6 +1,5 @@
 package com.api.stagease.DTO;
 
-import com.api.stagease.Entity.CursoEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
