@@ -1,8 +1,6 @@
 package com.api.stagease.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,5 +11,9 @@ import lombok.Setter;
 public class SupervisorEntity extends AbstractEntity {
     @Column(name = "nome", nullable = false)
     private String nomeSupervisor;
+
+    @OneToOne
+    @JoinColumn(name = "solicitacao_id")
+    private SolicitacaoEntity solicitacao;
 }
 

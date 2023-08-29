@@ -1,9 +1,7 @@
 package com.api.stagease.Entity;
 
 import com.api.stagease.Entity.Enum.Ocorrencia;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,4 +21,8 @@ public class ExpedienteEntity extends AbstractEntity {
 
     @Column(name = "ocorrencia", nullable = false)
     private List<Ocorrencia> ocorrencias;
+
+    @OneToOne
+    @JoinColumn(name = "solicitacao_id")
+    private SolicitacaoEntity solicitacao;
 }
