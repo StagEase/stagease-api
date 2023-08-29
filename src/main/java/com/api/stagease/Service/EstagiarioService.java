@@ -17,7 +17,7 @@ public class EstagiarioService {
     private ModelMapper modelMapper;
 
     @Transactional
-    public EstagiarioEntity create(EstagiarioDTO dto) {
+    public EstagiarioDTO create(EstagiarioDTO dto) {
         if (dto.getId() != null) {
             throw new RuntimeException("Não insira o id manualmente");
         }
@@ -28,13 +28,15 @@ public class EstagiarioService {
     }
 
     @Transactional
-    public EstagiarioEntity update(Long id, EstagiarioDTO dto) {
+    public EstagiarioDTO update(Long id, EstagiarioDTO dto) {
         EstagiarioEntity banco = this.repository.findById(id).orElse(null);
         if (!banco.getId().equals(dto.getId())) {
             throw new RuntimeException("Não foi possivel encontrar o registro informado");
         }
         modelMapper.map(dto, banco);
-        return repository.save(banco);
+        EstagiarioDTO estagiario = new EstagiarioDTO();
+        BeanUtils.copyProperties(repository.save(banco), estagiario);
+        return estagiario;
     }
 
     @Transactional
