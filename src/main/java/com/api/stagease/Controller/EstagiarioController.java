@@ -1,9 +1,10 @@
 package com.api.stagease.Controller;
 
+import com.api.stagease.DTO.EstagiarioDTO;
 import com.api.stagease.DTO.LocalDTO;
+import com.api.stagease.Entity.EstagiarioEntity;
 import com.api.stagease.Entity.LocalEntity;
-import com.api.stagease.Repository.LocalRepository;
-import com.api.stagease.Service.LocalService;
+import com.api.stagease.Repository.EstagiarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -14,22 +15,22 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/local")
-public class LocalController {
+@RequestMapping(value = "/estagiario")
+public class EstagiarioController {
+    /*@Autowired
+    private LocalService service;*/
     @Autowired
-    private LocalService service;
-    @Autowired
-    private LocalRepository repository;
+    private EstagiarioRepository repository;
 
     @GetMapping("/list")
-    public ResponseEntity<List<LocalEntity>> list() {
+    public ResponseEntity<List<EstagiarioEntity>> list() {
         return ResponseEntity.ok(this.repository.findAll());
     }
 
     @GetMapping
-    public ResponseEntity<LocalEntity> getByIdRequest(@RequestParam("id") final Long id) {
+    public ResponseEntity<EstagiarioEntity> getByIdRequest(@RequestParam("id") final Long id) {
         try {
-            final LocalEntity local = this.repository.findById(id).orElse(null);
+            final EstagiarioEntity local = this.repository.findById(id).orElse(null);
             return ResponseEntity.ok(local);
         }
         catch (Exception e){
@@ -38,7 +39,7 @@ public class LocalController {
     }
 
     @PostMapping
-    public ResponseEntity<LocalEntity> create(@RequestBody final LocalDTO dto) {
+    public ResponseEntity<EstagiarioEntity> create(@RequestBody final EstagiarioDTO dto) {
         try {
             return ResponseEntity.ok(this.service.create(dto));
         }
@@ -48,7 +49,7 @@ public class LocalController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<LocalEntity> update(@PathVariable("id") final Long id, @RequestBody final LocalDTO dto) {
+    public ResponseEntity<EstagiarioEntity> update(@PathVariable("id") final Long id, @RequestBody final EstagiarioDTO dto) {
         try {
             return ResponseEntity.ok(service.update(id, dto));
         }
@@ -59,7 +60,7 @@ public class LocalController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") final Long id) {
-        final LocalEntity local = this.repository.findById(id).orElse(null);
+        final EstagiarioEntity local = this.repository.findById(id).orElse(null);
         try {
             this.repository.delete(local);
             return ResponseEntity.ok("Local deletado com sucesso");

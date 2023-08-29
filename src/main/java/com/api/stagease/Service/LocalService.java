@@ -5,6 +5,7 @@ import com.api.stagease.Entity.LocalEntity;
 import com.api.stagease.Repository.LocalRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,13 +26,13 @@ public class LocalService {
     }
 
     @Transactional
-    public void update(Long id, LocalDTO dto) {
+    public LocalEntity update(Long id, LocalDTO dto) {
         LocalEntity banco = this.repository.findById(id).orElse(null);
         if (!banco.getId().equals(dto.getId())) {
             throw new RuntimeException("Não foi possivel encontrar o registro informado");
         }
         modelMapper.map(dto, banco);
-        repository.save(banco);
+        return repository.save(banco);
     }
 
     @Transactional
