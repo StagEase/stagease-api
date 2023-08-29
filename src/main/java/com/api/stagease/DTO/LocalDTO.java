@@ -1,6 +1,7 @@
 package com.api.stagease.DTO;
 
 import com.api.stagease.Entity.CursoEntity;
+import com.api.stagease.Entity.Enum.Ocorrencia;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,5 +17,5 @@ public class LocalDTO {
     private Long id;
     private String nomeLocal;
     private String email;
-    private List<LocalDTO> ocorrencias;
+    private List<Ocorrencia> ocorrencias;
 }
