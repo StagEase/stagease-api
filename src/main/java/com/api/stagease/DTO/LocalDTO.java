@@ -16,5 +16,5 @@ public class LocalDTO {
     private Long id;
     private String nomeLocal;
     private String email;
-    private List<CursoEntity> ocorrencias;
+    private List<LocalDTO> ocorrencias;
 }
