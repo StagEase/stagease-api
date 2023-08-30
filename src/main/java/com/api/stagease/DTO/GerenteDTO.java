@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SupervisorDTO {
-    private Long id;
-    private String nomeSupervisor;
+public class GerenteDTO extends AbstractDTO{
+    private String nomeGerente;
 }

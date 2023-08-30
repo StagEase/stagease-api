@@ -1,9 +1,7 @@
 package com.api.stagease.Service;
 
 import com.api.stagease.DTO.SolicitacaoDTO;
-import com.api.stagease.DTO.SupervisorDTO;
 import com.api.stagease.Entity.SolicitacaoEntity;
-import com.api.stagease.Entity.SupervisorEntity;
 import com.api.stagease.Repository.SolicitacaoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

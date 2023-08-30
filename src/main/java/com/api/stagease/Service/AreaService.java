@@ -1,32 +1,32 @@
 package com.api.stagease.Service;
 
-import com.api.stagease.DTO.CursoDTO;
-import com.api.stagease.Entity.CursoEntity;
-import com.api.stagease.Repository.CursoRepository;
+import com.api.stagease.DTO.AreaDTO;
+import com.api.stagease.Entity.AreaEntity;
+import com.api.stagease.Repository.AreaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CursoService {
+public class AreaService {
     @Autowired
-    private CursoRepository repository;
+    private AreaRepository repository;
     @Autowired
     private ModelMapper modelMapper;
 
     @Transactional
-    public CursoEntity create(CursoDTO dto) {
+    public AreaEntity create(AreaDTO dto) {
         if (dto.getId() != null) {
             throw new RuntimeException("Não insira o id manualmente");
         }
-        CursoEntity entity = modelMapper.map(dto, CursoEntity.class);
+        AreaEntity entity = modelMapper.map(dto, AreaEntity.class);
         return repository.save(entity);
     }
 
     @Transactional
-    public void update(Long id, CursoDTO dto) {
-        CursoEntity banco = this.repository.findById(id).orElse(null);
+    public void update(Long id, AreaDTO dto) {
+        AreaEntity banco = this.repository.findById(id).orElse(null);
         if (!banco.getId().equals(dto.getId())) {
             throw new RuntimeException("Não foi possivel encontrar o registro informado");
         }
@@ -36,7 +36,7 @@ public class CursoService {
 
     @Transactional
     public void delete(Long id) {
-        CursoEntity entity = repository.findById(id)
+        AreaEntity entity = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Não foi possivel encontrar o registro informado"));
         repository.delete(entity);
     }

@@ -9,8 +9,7 @@ import java.time.LocalTime;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DuracaoDTO {
-    private Long id;
+public class DuracaoDTO extends AbstractDTO{
     private LocalTime dataInicio;
     private LocalTime dataFim;
     private Long cargaHoraria;

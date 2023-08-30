@@ -1,8 +1,6 @@
 package com.api.stagease.Controller;
 
-import com.api.stagease.DTO.CursoDTO;
 import com.api.stagease.DTO.DuracaoDTO;
-import com.api.stagease.Entity.CursoEntity;
 import com.api.stagease.Entity.DuracaoEntity;
 import com.api.stagease.Repository.DuracaoRepository;
 import com.api.stagease.Service.DuracaoService;

@@ -10,11 +10,10 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SolicitacaoDTO {
-    private Long id;
-    private LocalDTO local;
+public class SolicitacaoDTO extends AbstractDTO{
+    private UBSDTO local;
     private EstagiarioDTO estagiario;
-    private SupervisorDTO supervisor;
+    private GerenteDTO gerente;
     private DuracaoDTO duracao;
     private List<Situacao> situacoes;
     private ExpedienteDTO expediente;

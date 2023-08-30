@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EstagiarioDTO {
-    private Long id;
+public class EstagiarioDTO extends AbstractDTO{
     private String nomeEstagiario;
-    private CursoDTO curso;
+    private AreaDTO area;
     private String periodo;
     private String instituicaoDeEnsino;
 }

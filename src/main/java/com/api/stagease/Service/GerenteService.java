@@ -1,32 +1,32 @@
 package com.api.stagease.Service;
 
-import com.api.stagease.DTO.SupervisorDTO;
-import com.api.stagease.Entity.SupervisorEntity;
-import com.api.stagease.Repository.SupervisorRepository;
+import com.api.stagease.DTO.GerenteDTO;
+import com.api.stagease.Entity.GerenteEntity;
+import com.api.stagease.Repository.GerenteRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class SupervisorService {
+public class GerenteService {
     @Autowired
-    private SupervisorRepository repository;
+    private GerenteRepository repository;
     @Autowired
     private ModelMapper modelMapper;
 
     @Transactional
-    public SupervisorEntity create(SupervisorDTO dto) {
+    public GerenteEntity create(GerenteDTO dto) {
         if (dto.getId() != null) {
             throw new RuntimeException("Não insira o id manualmente");
         }
-        SupervisorEntity entity = modelMapper.map(dto, SupervisorEntity.class);
+        GerenteEntity entity = modelMapper.map(dto, GerenteEntity.class);
         return repository.save(entity);
     }
 
     @Transactional
-    public void update(Long id, SupervisorDTO dto) {
-        SupervisorEntity banco = this.repository.findById(id).orElse(null);
+    public void update(Long id, GerenteDTO dto) {
+        GerenteEntity banco = this.repository.findById(id).orElse(null);
         if (!banco.getId().equals(dto.getId())) {
             throw new RuntimeException("Não foi possivel encontrar o registro informado");
         }
@@ -36,7 +36,7 @@ public class SupervisorService {
 
     @Transactional
     public void delete(Long id) {
-        SupervisorEntity entity = repository.findById(id)
+        GerenteEntity entity = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Não foi possivel encontrar o registro informado"));
         repository.delete(entity);
     }

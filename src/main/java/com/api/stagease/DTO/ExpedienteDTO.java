@@ -12,8 +12,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExpedienteDTO {
-    private Long id;
+public class ExpedienteDTO extends AbstractDTO{
     private LocalTime horaInicio;
     private LocalTime horaFim;
     private List<Ocorrencia> ocorrencias;

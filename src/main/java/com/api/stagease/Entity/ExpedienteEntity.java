@@ -8,21 +8,20 @@ import lombok.Setter;
 import java.time.LocalTime;
 import java.util.List;
 
-@Getter
-@Setter
+@Getter @Setter
 @Entity
 @Table(name = "expediente", schema = "stagease")
 public class ExpedienteEntity extends AbstractEntity {
-    @Column(name = "hora_inicio", nullable = false)
+    @Column(nullable = false)
     private LocalTime horaInicio;
 
-    @Column(name = "hora_fim", nullable = false)
+    @Column(nullable = false)
     private LocalTime horaFim;
 
-    @Column(name = "ocorrencia", nullable = false)
+    @Column(nullable = false)
     private List<Ocorrencia> ocorrencias;
 
     @OneToOne
-    @JoinColumn(name = "solicitacao_id")
+    @JoinColumn(name = "solicitacao_id",nullable = false)
     private SolicitacaoEntity solicitacao;
 }

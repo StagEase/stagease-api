@@ -7,29 +7,31 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Getter @Setter
 @Entity
 @Table(name = "solicitacao", schema = "stagease")
 public class SolicitacaoEntity extends AbstractEntity{
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "local_id", referencedColumnName = "id", nullable = false)
-    private LocalEntity local;
+    @JoinColumn(name = "ubs_id", nullable = false)
+    private UBSEntity ubs;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "estagiaria_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "estagiario_id", nullable = false)
     private EstagiarioEntity estagiario;
 
     @OneToOne(mappedBy = "solicitacao")
-    private SupervisorEntity supervisor;
+    @JoinColumn(name = "gerente_id", nullable = false)
+    private GerenteEntity gerente;
 
     @OneToOne(mappedBy = "solicitacao")
+    @JoinColumn(name = "duracao_id", nullable = false)
     private DuracaoEntity duracao;
 
     @Column(name = "situacao", nullable = false)
     private List<Situacao> situacoes;
 
     @OneToOne(mappedBy = "solicitacao")
+    @JoinColumn(name = "expediente_id", nullable = false)
     private ExpedienteEntity expediente;
 }

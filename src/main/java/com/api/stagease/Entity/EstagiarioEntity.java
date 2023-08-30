@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Getter @Setter
 @Entity
 @Table(name = "estagiario", schema = "stagease")
 public class EstagiarioEntity extends AbstractEntity{
@@ -13,8 +12,8 @@ public class EstagiarioEntity extends AbstractEntity{
     private String nomeEstagiario;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "curso_id", referencedColumnName = "id", nullable = false)
-    private CursoEntity curso;
+    @JoinColumn(name = "area_id", nullable = false)
+    private AreaEntity area;
 
     @Column(length = 50, nullable = false)
     private String periodo;

@@ -21,6 +21,6 @@ public class DuracaoEntity extends AbstractEntity{
     private Long cargaHoraria;
 
     @OneToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "solicitacao_id",nullable = false)
     private SolicitacaoEntity solicitacao;
 }

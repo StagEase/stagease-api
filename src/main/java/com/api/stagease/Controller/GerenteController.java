@@ -1,26 +1,21 @@
 package com.api.stagease.Controller;
 
-import com.api.stagease.Config.HandlerException;
-import com.api.stagease.DTO.CursoDTO;
-import com.api.stagease.Entity.CursoEntity;
-import com.api.stagease.Repository.CursoRepository;
-import com.api.stagease.Service.CursoService;
+import com.api.stagease.DTO.GerenteDTO;
+import com.api.stagease.Entity.GerenteEntity;
+import com.api.stagease.Repository.GerenteRepository;
+import com.api.stagease.Service.GerenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-
 
 @RestController
-@RequestMapping(value = "/curso")
-public class CursoController {
+@RequestMapping(value = "/gerente")
+public class GerenteController {
     @Autowired
-    private CursoService service;
+    private GerenteService service;
     @Autowired
-    private CursoRepository repository;
+    private GerenteRepository repository;
 
     @GetMapping("/list")
     public ResponseEntity<?> list() {
@@ -29,17 +24,12 @@ public class CursoController {
 
     @GetMapping
     public ResponseEntity<?> getByIdRequest(@RequestParam("id") final Long id) {
-        final CursoEntity entity = this.repository.findById(id).orElse(null);
-        try {
-            return ResponseEntity.ok(entity);
-        }
-        catch (Exception e){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        }
+        final GerenteEntity entity = this.repository.findById(id).orElse(null);
+        return entity == null ? ResponseEntity.badRequest().body("Esse registro não existe") : ResponseEntity.ok(entity);
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@Validated @RequestBody CursoDTO dto) {
+    public ResponseEntity<?> create(@RequestBody GerenteDTO dto) {
         try {
             service.create(dto);
         } catch (Exception e) {
@@ -49,7 +39,7 @@ public class CursoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") final Long id, @RequestBody final CursoDTO dto) {
+    public ResponseEntity<?> update(@PathVariable("id") final Long id, @RequestBody final GerenteDTO dto) {
         try {
             service.update(id, dto);
         } catch (DataIntegrityViolationException e) {

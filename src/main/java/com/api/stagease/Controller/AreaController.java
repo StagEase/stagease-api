@@ -1,21 +1,24 @@
 package com.api.stagease.Controller;
 
-import com.api.stagease.DTO.SupervisorDTO;
-import com.api.stagease.Entity.SupervisorEntity;
-import com.api.stagease.Repository.SupervisorRepository;
-import com.api.stagease.Service.SupervisorService;
+import com.api.stagease.DTO.AreaDTO;
+import com.api.stagease.Entity.AreaEntity;
+import com.api.stagease.Repository.AreaRepository;
+import com.api.stagease.Service.AreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping(value = "/supervisor")
-public class SupervisorController {
+@RequestMapping(value = "/area")
+public class AreaController {
     @Autowired
-    private SupervisorService service;
+    private AreaService service;
     @Autowired
-    private SupervisorRepository repository;
+    private AreaRepository repository;
 
     @GetMapping("/list")
     public ResponseEntity<?> list() {
@@ -24,12 +27,17 @@ public class SupervisorController {
 
     @GetMapping
     public ResponseEntity<?> getByIdRequest(@RequestParam("id") final Long id) {
-        final SupervisorEntity entity = this.repository.findById(id).orElse(null);
-        return entity == null ? ResponseEntity.badRequest().body("Esse registro não existe") : ResponseEntity.ok(entity);
+        final AreaEntity entity = this.repository.findById(id).orElse(null);
+        try {
+            return ResponseEntity.ok(entity);
+        }
+        catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody SupervisorDTO dto) {
+    public ResponseEntity<?> create(@Validated @RequestBody AreaDTO dto) {
         try {
             service.create(dto);
         } catch (Exception e) {
@@ -39,7 +47,7 @@ public class SupervisorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") final Long id, @RequestBody final SupervisorDTO dto) {
+    public ResponseEntity<?> update(@PathVariable("id") final Long id, @RequestBody final AreaDTO dto) {
         try {
             service.update(id, dto);
         } catch (DataIntegrityViolationException e) {

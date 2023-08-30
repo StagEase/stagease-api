@@ -1,9 +1,9 @@
 package com.api.stagease.Controller;
 
-import com.api.stagease.DTO.LocalDTO;
-import com.api.stagease.Entity.LocalEntity;
-import com.api.stagease.Repository.LocalRepository;
-import com.api.stagease.Service.LocalService;
+import com.api.stagease.DTO.UBSDTO;
+import com.api.stagease.Entity.UBSEntity;
+import com.api.stagease.Repository.UBSRepository;
+import com.api.stagease.Service.UBSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -14,22 +14,22 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/local")
-public class LocalController {
+@RequestMapping(value = "/ubs")
+public class UBSController {
     @Autowired
-    private LocalService service;
+    private UBSService service;
     @Autowired
-    private LocalRepository repository;
+    private UBSRepository repository;
 
     @GetMapping("/list")
-    public ResponseEntity<List<LocalEntity>> list() {
+    public ResponseEntity<List<UBSEntity>> list() {
         return ResponseEntity.ok(this.repository.findAll());
     }
 
     @GetMapping
-    public ResponseEntity<LocalEntity> getByIdRequest(@RequestParam("id") final Long id) {
+    public ResponseEntity<UBSEntity> getByIdRequest(@RequestParam("id") final Long id) {
         try {
-            final LocalEntity local = this.repository.findById(id).orElse(null);
+            final UBSEntity local = this.repository.findById(id).orElse(null);
             return ResponseEntity.ok(local);
         }
         catch (Exception e){
@@ -38,7 +38,7 @@ public class LocalController {
     }
 
     @PostMapping
-    public ResponseEntity<LocalDTO> create(@RequestBody final LocalDTO dto) {
+    public ResponseEntity<UBSDTO> create(@RequestBody final UBSDTO dto) {
         try {
             return ResponseEntity.ok(this.service.create(dto));
         }
@@ -48,7 +48,7 @@ public class LocalController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<LocalDTO> update(@PathVariable("id") final Long id, @RequestBody final LocalDTO dto) {
+    public ResponseEntity<UBSDTO> update(@PathVariable("id") final Long id, @RequestBody final UBSDTO dto) {
         try {
             return ResponseEntity.ok(service.update(id, dto));
         }
