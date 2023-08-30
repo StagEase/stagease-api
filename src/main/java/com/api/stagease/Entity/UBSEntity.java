@@ -1,5 +1,6 @@
 package com.api.stagease.Entity;
 
+import com.api.stagease.Entity.Enum.Situacao;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -30,8 +30,4 @@ public class SolicitacaoEntity extends AbstractEntity{
 
     @Column(name = "situacao", nullable = false)
     private List<Situacao> situacoes;
-
-    @OneToOne(mappedBy = "solicitacao")
-    @JoinColumn(name = "expediente_id", nullable = false)
-    private ExpedienteEntity expediente;
 }

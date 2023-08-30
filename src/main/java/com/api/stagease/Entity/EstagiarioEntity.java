@@ -13,11 +13,21 @@ public class EstagiarioEntity extends AbstractEntity{
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "area_id", nullable = false)
-    private AreaEntity area;
+    private AreaEntity areaEstagiario;
 
     @Column(length = 50, nullable = false)
     private String periodo;
 
     @Column(length = 50, nullable = false)
     private String instituicaoDeEnsino;
+
+    @OneToOne(mappedBy = "estagiario")
+    @JoinColumn(name = "expediente_id", nullable = false)
+    private ExpedienteEntity expediente;
+
+    @Column(length = 50, nullable = false)
+    private String matricula;
+
+    @Column(name = "endereco_termo")
+    private int termo;
 }
