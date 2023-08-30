@@ -27,9 +27,9 @@ public class EstagiarioController {
     }
 
     @GetMapping
-    public ResponseEntity<EstagiarioDTO> getByIdRequest(@RequestParam("id") final Long id) {
+    public ResponseEntity<EstagiarioEntity> getByIdRequest(@RequestParam("id") final Long id) {
+        final EstagiarioEntity local = this.repository.findById(id).orElse(null);
         try {
-            final EstagiarioEntity local = this.repository.findById(id).orElse(null);
             return ResponseEntity.ok(local);
         }
         catch (Exception e){
@@ -58,10 +58,11 @@ public class EstagiarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable("id") final Long id) {
+    public ResponseEntity<String> delete(@PathVariable("id") final Long id) {
         final EstagiarioEntity local = this.repository.findById(id).orElse(null);
         try {
-            return ResponseEntity.ok(this.repository.delete(local));
+            this.repository.delete(local);
+            return ResponseEntity.ok("OK");
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }

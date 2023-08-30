@@ -7,9 +7,11 @@ import com.api.stagease.Repository.CursoRepository;
 import com.api.stagease.Service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
@@ -28,10 +30,12 @@ public class CursoController {
     @GetMapping
     public ResponseEntity<?> getByIdRequest(@RequestParam("id") final Long id) {
         final CursoEntity entity = this.repository.findById(id).orElse(null);
-        if (entity.getId() == null) {
-            throw new HandlerException("Não foi possivel encontrar o id: " + id);
+        try {
+            return ResponseEntity.ok(entity);
         }
-        return ResponseEntity.ok(entity);
+        catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 
     @PostMapping

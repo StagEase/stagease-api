@@ -38,7 +38,7 @@ public class LocalController {
     }
 
     @PostMapping
-    public ResponseEntity<LocalEntity> create(@RequestBody final LocalDTO dto) {
+    public ResponseEntity<LocalDTO> create(@RequestBody final LocalDTO dto) {
         try {
             return ResponseEntity.ok(this.service.create(dto));
         }
@@ -48,7 +48,7 @@ public class LocalController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<LocalEntity> update(@PathVariable("id") final Long id, @RequestBody final LocalDTO dto) {
+    public ResponseEntity<LocalDTO> update(@PathVariable("id") final Long id, @RequestBody final LocalDTO dto) {
         try {
             return ResponseEntity.ok(service.update(id, dto));
         }

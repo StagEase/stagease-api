@@ -7,13 +7,11 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-
-@Getter
-@Setter
+@Getter @Setter
 @Entity
 @Table(name = "curso", schema = "stagease")
 public class CursoEntity extends AbstractEntity {
     @Size(min = 3, max = 5, message = "Deu certo mano, mais ou menos")
-    @Column(name = "nome_curso", length = 50, nullable = false, unique = true)
+    @Column(length = 50, nullable = false, unique = true)
     private String nomeCurso;
 }

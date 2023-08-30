@@ -7,21 +7,20 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-@Getter
-@Setter
+@Getter @Setter
 @Entity
 @Table(name = "duracao", schema = "stagease")
 public class DuracaoEntity extends AbstractEntity{
-    @Column(name = "data_inicio", nullable = false)
+    @Column(nullable = false)
     private LocalTime dataInicio;
 
-    @Column(name = "data_fim", nullable = false)
+    @Column(nullable = false)
     private LocalTime dataFim;
 
-    @Column(name = "carga_horaria", nullable = false)
+    @Column(nullable = false)
     private Long cargaHoraria;
 
     @OneToOne
-    @JoinColumn(name = "solicitacao_id")
+    @JoinColumn(nullable = false)
     private SolicitacaoEntity solicitacao;
 }
