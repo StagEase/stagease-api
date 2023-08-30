@@ -21,8 +21,4 @@ public class ExpedienteEntity extends AbstractEntity {
     @Enumerated
     @Column(nullable = false)
     private List<Ocorrencia> ocorrencias;
-
-    @OneToOne(mappedBy = "expediente")
-    @JoinColumn(name = "estagiario_id",nullable = false)
-    private EstagiarioEntity estagiario;
 }

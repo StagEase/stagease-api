@@ -16,10 +16,6 @@ public class SolicitacaoEntity extends AbstractEntity{
     @JoinColumn(name = "ubs_id", nullable = false)
     private UBSEntity ubs;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "estagiarios_id", nullable = false)
-    private EstagiarioEntity estagiarios;
-
     @OneToOne(mappedBy = "solicitacao")
     @JoinColumn(name = "gerente_id", nullable = false)
     private GerenteEntity gerente;
