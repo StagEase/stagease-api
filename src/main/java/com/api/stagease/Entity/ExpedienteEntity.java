@@ -18,6 +18,7 @@ public class ExpedienteEntity extends AbstractEntity {
     @Column(nullable = false)
     private LocalTime horaFim;
 
+    @Enumerated
     @Column(nullable = false)
     private List<Ocorrencia> ocorrencias;
 

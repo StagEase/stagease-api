@@ -1,5 +1,6 @@
 package com.api.stagease.Entity;
 
+import com.api.stagease.Entity.Enum.Distrito;
 import com.api.stagease.Entity.Enum.Situacao;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,6 +17,9 @@ public class UBSEntity extends AbstractEntity{
 
     @Column(length = 50, nullable = false, unique = true)
     private String email;
+
+    @Column(name = "distrito", nullable = false)
+    private List<Distrito> distrito;
 
     @ManyToMany
     @JoinTable(

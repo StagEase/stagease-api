@@ -28,6 +28,7 @@ public class SolicitacaoEntity extends AbstractEntity{
     @JoinColumn(name = "duracao_id", nullable = false)
     private DuracaoEntity duracao;
 
+    @Enumerated
     @Column(name = "situacao", nullable = false)
     private List<Situacao> situacoes;
 }
