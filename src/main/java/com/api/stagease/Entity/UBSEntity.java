@@ -19,7 +19,7 @@ public class UBSEntity extends AbstractEntity{
     private String email;
 
     @Column(name = "distrito", nullable = false)
-    private List<Distrito> distrito;
+    private Distrito distrito;
 
     @ManyToMany
     @JoinTable(

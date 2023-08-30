@@ -1,6 +1,7 @@
 package com.api.stagease.DTO;
 
 import com.api.stagease.Entity.Enum.Ocorrencia;
+import com.api.stagease.Entity.EstagiarioEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,4 +17,5 @@ public class ExpedienteDTO extends AbstractDTO{
     private LocalTime horaInicio;
     private LocalTime horaFim;
     private List<Ocorrencia> ocorrencias;
+    private EstagiarioDTO estagiario;
 }

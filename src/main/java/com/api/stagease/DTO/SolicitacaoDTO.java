@@ -11,10 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SolicitacaoDTO extends AbstractDTO{
-    private UBSDTO local;
-    private EstagiarioDTO estagiario;
+    private UBSDTO ubs;
+    private EstagiarioDTO estagiarios;
     private GerenteDTO gerente;
     private DuracaoDTO duracao;
-    private List<Situacao> situacoes;
-    private ExpedienteDTO expediente;
+    private Situacao situacao;
 }

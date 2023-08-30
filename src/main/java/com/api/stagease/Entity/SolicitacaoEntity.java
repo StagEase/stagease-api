@@ -17,8 +17,8 @@ public class SolicitacaoEntity extends AbstractEntity{
     private UBSEntity ubs;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "estagiario_id", nullable = false)
-    private EstagiarioEntity estagiario;
+    @JoinColumn(name = "estagiarios_id", nullable = false)
+    private EstagiarioEntity estagiarios;
 
     @OneToOne(mappedBy = "solicitacao")
     @JoinColumn(name = "gerente_id", nullable = false)
@@ -30,5 +30,5 @@ public class SolicitacaoEntity extends AbstractEntity{
 
     @Enumerated
     @Column(name = "situacao", nullable = false)
-    private List<Situacao> situacoes;
+    private Situacao situacao;
 }
